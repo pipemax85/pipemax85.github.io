@@ -1,0 +1,7 @@
+SELECT * FROM `users` usertemp 
+join `accounts` acc on (acc.assigned_user_id=usertemp.id)
+join `contacts_cstm` contactc on (contactc.account_id_c=acc.id)
+join `contacts` contact on (contact.id=contactc.id_c)
+join `aos_quotes` aq on (aq.billing_account_id=acc.id and aq.billing_contact_id=contact.id)
+join `aos_quotes_cstm` aqc on (aqc.id_c=aq.id)
+WHERE usertemp.id = '87f77e60-1f91-b7c5-de26-564c35808aba' and aq.date_entered>'2017-12-31'
